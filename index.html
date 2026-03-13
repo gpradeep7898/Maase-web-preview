@@ -1039,7 +1039,8 @@ ham.addEventListener('click', function() { nl.classList.toggle('open'); ham.text
 document.querySelectorAll('.nav-links a').forEach(function(a) { a.addEventListener('click', function() { nl.classList.remove('open'); ham.textContent = '☰'; }); });
 
 /* ── PHONE FILTER ── */
-document.getElementById('phoneChips').addEventListener('click', function(e) {
+var phoneChipsEl = document.getElementById('phoneChips');
+if (phoneChipsEl) phoneChipsEl.addEventListener('click', function(e) {
   var chip = e.target.closest('.p-chip'); if (!chip) return;
   document.querySelectorAll('.p-chip').forEach(function(c) { c.classList.remove('active'); });
   chip.classList.add('active');
