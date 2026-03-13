@@ -44,11 +44,13 @@
     .nav { position: sticky; top: 0; z-index: 100; backdrop-filter: blur(14px); background: rgba(248,243,232,0.92); border-bottom: 1px solid rgba(92,58,33,0.08); }
     .nav-inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
     .brand { display: flex; align-items: center; gap: 12px; }
-    .brand-logo { width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0; overflow: hidden; box-shadow: 0 4px 14px rgba(92,58,33,0.24); border: 2px solid rgba(244,163,0,0.35); }
+    .brand-logo { width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0; overflow: hidden; box-shadow: 0 4px 14px rgba(92,58,33,0.24); }
+    .brand-logo img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.22); transform-origin: center; }
 
     /* ── LOGO HEADER ── */
     .logo-header { text-align: center; padding: 24px 0 12px; }
-    .logo-header img { width: 90px; height: 90px; border-radius: 22px; object-fit: cover; box-shadow: 0 12px 30px rgba(92,58,33,0.18); border: 2px solid rgba(244,163,0,0.22); display: block; margin: 0 auto; }
+    .logo-header { overflow: hidden; }
+    .logo-header img { width: 90px; height: 90px; border-radius: 22px; object-fit: cover; box-shadow: 0 12px 30px rgba(92,58,33,0.18); display: block; margin: 0 auto; transform: scale(1.22); transform-origin: center; }
     .logo-header-name { font-family: 'Playfair Display', serif; font-size: 2rem; margin-top: 16px; letter-spacing: -0.02em; }
     .logo-header-tag { font-size: 0.88rem; color: var(--mocha-soft); margin-top: 4px; }
 
@@ -501,7 +503,7 @@
     .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; border-top: 1px solid rgba(92,58,33,0.08); padding-top: 22px; color: var(--mocha-soft); }
     .footer-brand { display: flex; align-items: center; gap: 12px; }
     .footer-logo { width: 52px; height: 52px; border-radius: 14px; overflow: hidden; box-shadow: 0 6px 16px rgba(92,58,33,0.14); }
-    .footer-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .footer-logo img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.22); transform-origin: center; }
     .footer-links { display: flex; gap: 18px; flex-wrap: wrap; font-size: 0.86rem; }
     .footer-links a:hover { color: var(--mocha); }
     .footer-copy { font-size: 0.8rem; }
@@ -555,7 +557,7 @@
       .map-section { padding: 32px 0; }
 
       /* Nav */
-      .brand-logo { width: 48px; height: 48px; border-radius: 12px; }
+      .brand-logo { width: 44px; height: 44px; border-radius: 12px; }
       .brand-word { font-size: 1.15rem; }
       .brand-tag { display: none; }
       .nav-inner { min-height: 56px; }
