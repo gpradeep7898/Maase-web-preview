@@ -321,9 +321,9 @@
     /* ── MEAL CARDS ── */
     .meal-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
     .meal-card { background: white; border-radius: 20px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); }
-    .meal-card-top { position: relative; height: 220px; overflow: hidden; }
-    .meal-card-top img { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; display: block; transition: transform 0.4s ease; }
-    .meal-card:hover .meal-card-top img { transform: scale(1.06); }
+    .meal-card-top { position: relative; height: 260px; overflow: hidden; }
+    .meal-card-top img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; transition: transform 0.4s ease; }
+    .meal-card:hover .meal-card-top img { transform: scale(1.04); }
     .meal-card-tag { position: absolute; bottom: 12px; left: 12px; display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.95); border: 1px solid rgba(34,197,94,0.3); border-radius: 999px; padding: 5px 11px; font-size: 0.7rem; font-weight: 700; color: #15803d; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
     .meal-card-body { padding: 18px 20px 16px; }
     .meal-card-body h3 { font-size: 1.05rem; color: var(--mocha); margin-bottom: 8px; line-height: 1.3; }
