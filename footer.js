@@ -37,7 +37,7 @@
 
     /* ─── CITY LAUNCH ─── */
     .mf-city {
-      background: #5C3A21; padding: 60px 0; text-align: center;
+      background: #5C3A21; padding: 40px 0; text-align: center;
     }
     .mf-city-inner { max-width: 720px; margin: 0 auto; padding: 0 20px; }
     .mf-city-eyebrow {
@@ -68,13 +68,13 @@
     }
 
     /* ─── MAIN FOOTER ─── */
-    .mf-footer { background: #3A2010; padding: 64px 0 0; font-family: 'Poppins', sans-serif; }
+    .mf-footer { background: #3A2010; padding: 40px 0 0; font-family: 'Poppins', sans-serif; }
     .mf-footer-inner { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
     .mf-top {
       display: grid;
       grid-template-columns: 1.5fr repeat(5, 1fr);
       gap: 32px;
-      padding-bottom: 52px;
+      padding-bottom: 32px;
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
