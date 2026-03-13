@@ -358,6 +358,144 @@
       .final-cta-btns .btn { width: 100%; }
     }
 
+    /* ════════════════════════════════════
+       PREMIUM MOTION & VISUAL UPGRADE
+    ════════════════════════════════════ */
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* ── WIDER CONTAINER + RHYTHM ── */
+    :root { --max: 1260px; }
+    .section { padding: 92px 0; }
+    @media(max-width:900px) { .section { padding: 64px 0; } }
+    @media(max-width:560px) { .section { padding: 48px 0; } }
+
+    /* ── CINEMATIC HERO ── */
+    .hero { padding: 80px 0 72px; overflow: hidden; position: relative; }
+    .hero h1 { font-size: clamp(2.8rem, 5.5vw, 5rem); line-height: 0.94; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .hero-orb { position: absolute; border-radius: 50%; filter: blur(88px); }
+    .hero-orb-1 { width: 560px; height: 560px; background: radial-gradient(circle, rgba(244,163,0,0.16) 0%, transparent 70%); top: -140px; right: -120px; animation: orbFloat 10s ease-in-out infinite; }
+    .hero-orb-2 { width: 380px; height: 380px; background: radial-gradient(circle, rgba(92,58,33,0.10) 0%, transparent 70%); bottom: -80px; left: -80px; animation: orbFloat 13s ease-in-out infinite; animation-delay: -4s; }
+    .hero-orb-3 { width: 280px; height: 280px; background: radial-gradient(circle, rgba(244,163,0,0.09) 0%, transparent 70%); top: 40%; left: 28%; animation: orbFloat 9s ease-in-out infinite; animation-delay: -6s; }
+    @keyframes orbFloat { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(20px,-24px) scale(1.04); } 66% { transform: translate(-14px,16px) scale(0.97); } }
+    .hero-shell { position: relative; z-index: 1; }
+
+    /* ── HERO STAGGERED ENTRANCE ── */
+    .hero-anim { opacity: 0; transform: translateY(28px); }
+    .hero-anim.go { animation: heroReveal 0.82s cubic-bezier(0.16,1,0.3,1) forwards; }
+    .hero-anim.d1 { animation-delay: 0.05s; } .hero-anim.d2 { animation-delay: 0.18s; }
+    .hero-anim.d3 { animation-delay: 0.30s; } .hero-anim.d4 { animation-delay: 0.42s; }
+    .hero-anim.d5 { animation-delay: 0.54s; }
+    @keyframes heroReveal { to { opacity: 1; transform: none; } }
+
+    /* ── SCROLL REVEAL (sr) ── */
+    .sr { opacity: 0; transform: translateY(36px); transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); will-change: opacity,transform; }
+    .sr.d1 { transition-delay: 0.08s; } .sr.d2 { transition-delay: 0.17s; } .sr.d3 { transition-delay: 0.26s; } .sr.d4 { transition-delay: 0.35s; }
+    .sr.visible { opacity: 1; transform: none; }
+
+    /* ── 3D PHONE SHOWCASE ── */
+    .phone-showcase { perspective: 1100px; }
+    .phone-float { transform-style: preserve-3d; transition: transform 0.18s ease; will-change: transform; }
+
+    /* ── PHONE MEAL CARDS HOVER ── */
+    .p-card { transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.28s ease; cursor: pointer; }
+    .p-card:hover { transform: translateY(-4px) scale(1.015); box-shadow: 0 16px 32px rgba(92,58,33,0.18); }
+    .p-add { transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), background 0.2s, color 0.2s; }
+    .p-add:hover { transform: scale(1.2) rotate(8deg); }
+
+    /* ── PREMIUM STEP BOXES ── */
+    .step-box { position: relative; overflow: hidden; transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease; }
+    .step-box::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(244,163,0,0.07) 0%,transparent 60%); opacity:0; transition:opacity 0.3s ease; border-radius:inherit; pointer-events:none; }
+    .step-box:hover { transform: translateY(-7px) scale(1.025); box-shadow: 0 28px 52px rgba(92,58,33,0.15); }
+    .step-box:hover::before { opacity: 1; }
+    .step-num { transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease; }
+    .step-box:hover .step-num { transform: scale(1.14); box-shadow: 0 8px 18px rgba(244,163,0,0.42); }
+
+    /* ── ANIMATED STEP CONNECTORS ── */
+    @keyframes connectorFlow { 0%,100% { opacity:0.35; transform:scaleX(0.65); } 50% { opacity:1; transform:scaleX(1); } }
+    .step-connector { animation: connectorFlow 2.8s ease-in-out infinite; }
+    .steps-row .step-connector:nth-of-type(2) { animation-delay: 0.4s; }
+    .steps-row .step-connector:nth-of-type(4) { animation-delay: 0.8s; }
+
+    /* ── PREMIUM MEAL CARDS (section) ── */
+    .meal-card { transition: transform 0.38s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.38s ease; position: relative; overflow: hidden; }
+    .meal-card::after { content:''; position:absolute; inset:0; background:linear-gradient(160deg,rgba(255,255,255,0.14) 0%,transparent 50%); opacity:0; transition:opacity 0.32s ease; pointer-events:none; }
+    .meal-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 36px 68px rgba(92,58,33,0.18); }
+    .meal-card:hover::after { opacity: 1; }
+    .meal-card-emoji { display: block; transition: transform 0.45s cubic-bezier(0.34,1.56,0.64,1); }
+    .meal-card:hover .meal-card-emoji { transform: scale(1.18) rotate(-6deg); }
+
+    /* ── PREMIUM TRUST CARDS ── */
+    .matters-item { transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease; position: relative; overflow: hidden; }
+    .matters-item::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 18% 50%,rgba(244,163,0,0.07) 0%,transparent 65%); opacity:0; transition:opacity 0.35s ease; border-radius:inherit; pointer-events:none; }
+    .matters-item:hover { transform: translateY(-7px) scale(1.01); box-shadow: 0 28px 56px rgba(92,58,33,0.14); }
+    .matters-item:hover::before { opacity: 1; }
+    .matters-icon { transition: transform 0.42s cubic-bezier(0.34,1.56,0.64,1); }
+    .matters-item:hover .matters-icon { transform: scale(1.14) rotate(-8deg); }
+
+    /* ── EARN CARD GLASSMORPHISM ── */
+    .earn-card { position: relative; overflow: hidden; transition: transform 0.35s ease, box-shadow 0.35s ease; }
+    .earn-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,0.14) 0%,transparent 55%); pointer-events:none; z-index:0; border-radius:inherit; }
+    .earn-card > * { position: relative; z-index: 1; }
+    .earn-card:hover { transform: translateY(-5px) rotate(0.5deg); box-shadow: 0 36px 72px rgba(244,163,0,0.22); }
+    .earn-daily { background: linear-gradient(135deg, var(--turmeric) 0%, var(--turmeric-deep) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    /* ── BUTTON SHIMMER ── */
+    .btn-primary { position: relative; overflow: hidden; }
+    .btn-primary::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,0.18) 0%,transparent 50%); pointer-events:none; opacity:0; transition:opacity 0.28s ease; }
+    .btn-primary:hover::after { opacity: 1; }
+    .btn-primary:active { transform: scale(0.97) !important; }
+
+    /* ── LIVE DOT RING PULSE ── */
+    .live-dot, .p-live-dot, .demo-dot { animation: livepulse 1.6s infinite, livering 1.6s infinite; }
+    @keyframes livering { 0% { box-shadow:0 0 0 0 rgba(34,197,94,0.5); } 70% { box-shadow:0 0 0 9px rgba(34,197,94,0); } 100% { box-shadow:0 0 0 0 rgba(34,197,94,0); } }
+
+    /* ── LIVE BADGE BREATHE ── */
+    .live-badge { animation: badgeBreathe 3.5s ease-in-out infinite; }
+    @keyframes badgeBreathe { 0%,100% { box-shadow:0 0 0 0 rgba(34,197,94,0); } 50% { box-shadow:0 0 0 8px rgba(34,197,94,0.09); } }
+
+    /* ── HERO CHIPS MICRO-BOUNCE ── */
+    .hero-chip { transition: all 0.22s cubic-bezier(0.34,1.56,0.64,1); }
+    .hero-chip:hover { background:rgba(244,163,0,0.22); border-color:rgba(244,163,0,0.45); transform:translateY(-2px) scale(1.05); }
+
+    /* ── SECTION TITLE GRADIENT TEXT ── */
+    .section-head h2, .final-cta h2 { background: linear-gradient(130deg, var(--mocha) 30%, var(--mocha-soft) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .idea-inner h2, .research-inner h2 { background: none; -webkit-text-fill-color: inherit; color: var(--ivory); }
+
+    /* ── IDEA LINE STAGGERED REVEAL ── */
+    .idea-line { opacity: 0; transform: translateY(14px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .idea-line.vis2 { opacity: 1; transform: none; }
+    .idea-divider { transform: scaleX(0); transition: transform 0.65s cubic-bezier(0.16,1,0.3,1); transform-origin: center; }
+    .idea-divider.vis2 { transform: scaleX(1); }
+
+    /* ── MODAL SPRING ENTRANCE ── */
+    .modal-overlay.open .modal-box { animation: modalSpring 0.5s cubic-bezier(0.34,1.56,0.64,1) both; }
+    @keyframes modalSpring { from { opacity:0; transform:scale(0.88) translateY(28px); } to { opacity:1; transform:scale(1) translateY(0); } }
+    .modal-step.active { animation: stepReveal 0.38s cubic-bezier(0.16,1,0.3,1) both; }
+    @keyframes stepReveal { from { opacity:0; transform:translateX(20px); } to { opacity:1; transform:none; } }
+    .modal-step-pip { transition: background 0.4s cubic-bezier(0.34,1.56,0.64,1), transform 0.4s ease; }
+    .modal-step-pip.done { transform: scaleX(1.08); }
+
+    /* ── RESEARCH GLOW BUTTONS ── */
+    .research-btns .btn-primary { box-shadow: 0 8px 28px rgba(244,163,0,0.38); }
+    .research-btns .btn-primary:hover { box-shadow: 0 18px 44px rgba(244,163,0,0.54); }
+
+    /* ── FINAL CTA AMBIENT GLOW ── */
+    .final-cta { position: relative; overflow: hidden; background: linear-gradient(170deg,#fffdf7 0%,rgba(244,163,0,0.05) 50%,#fff9ee 100%); }
+    .final-cta::before { content:''; position:absolute; width:700px; height:700px; border-radius:50%; background:radial-gradient(circle,rgba(244,163,0,0.08) 0%,transparent 70%); top:-280px; left:50%; transform:translateX(-50%); pointer-events:none; }
+
+    /* ── COOK SECTION VISUAL CARD ── */
+    .cook-order-grid .earn-card:hover { transform: translateY(-6px) rotate(0.8deg); box-shadow: 0 40px 80px rgba(244,163,0,0.26); }
+
+    /* ── IDEA SECTION WIDER ── */
+    .idea-section { padding: 100px 0; }
+    .idea-inner { max-width: 800px; }
+    .idea-line { font-size: 1.1rem; }
+    .idea-line.turmeric { font-size: 1.35rem; }
+
     /* ── FOOTER ── */
     footer { padding: 36px 0 48px; }
     .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; border-top: 1px solid rgba(92,58,33,0.08); padding-top: 22px; color: var(--mocha-soft); }
@@ -518,20 +656,25 @@
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+  </div>
   <div class="container hero-shell">
     <div>
-      <h1>One extra meal from Maa can become income.</h1>
-      <p class="hero-sub">Every day, millions of mothers cook for their families.<br>Maase helps them earn by cooking <strong>just one extra portion</strong> of the same meal.<br>Fresh home food for neighbours.<br>Cooked in real homes near you.</p>
-      <div class="hero-chips">
+      <h1 class="hero-anim d1">One extra meal from Maa can become income.</h1>
+      <p class="hero-sub hero-anim d2">Every day, millions of mothers cook for their families.<br>Maase helps them earn by cooking <strong>just one extra portion</strong> of the same meal.<br>Fresh home food for neighbours.<br>Cooked in real homes near you.</p>
+      <div class="hero-chips hero-anim d3">
         <span class="hero-chip">One extra meal</span>
         <span class="hero-chip">One extra income</span>
         <span class="hero-chip">One stronger home</span>
       </div>
-      <div class="hero-actions">
+      <div class="hero-actions hero-anim d4">
         <a class="btn btn-primary btn-lg" href="#order">Get home cooked meals near you</a>
         <button class="btn btn-secondary btn-lg" onclick="openChefModal()">Cook from home and earn</button>
       </div>
-      <div class="hero-trust">
+      <div class="hero-trust hero-anim d5">
         <div class="live-badge"><div class="live-dot"></div><span id="liveApps">early</span> applications from Bangalore</div>
       </div>
     </div>
@@ -755,7 +898,7 @@
         <div class="earn-daily">₹200–400</div>
         <div class="earn-daily-note">per day from 1–2 extra meals</div>
         <div class="earn-month">
-          <div><div class="earn-month-num">₹6,000+</div><div class="earn-month-lbl">possible per month</div></div>
+          <div><div class="earn-month-num" data-counter="6000" data-prefix="₹" data-suffix="+">₹6,000+</div><div class="earn-month-lbl">possible per month</div></div>
           <div style="font-size:2rem">🍱</div>
         </div>
         <div class="earn-foot">No restaurant setup needed. Just cook what you already cook for your family.</div>
@@ -1112,6 +1255,150 @@ var db = document.getElementById('demoBatch'); if (db) batchIO.observe(db);
 /* ── STEP CONNECTORS ── */
 function fixSteps() { document.querySelectorAll('.step-connector').forEach(function(c) { c.style.display = window.innerWidth < 900 ? 'none' : 'flex'; }); }
 fixSteps(); window.addEventListener('resize', fixSteps);
+
+/* ── MOTION ENGINE ── */
+(function() {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* HERO ENTRANCE */
+  function runHeroEntrance() {
+    document.querySelectorAll('.hero-anim').forEach(function(el) { el.classList.add('go'); });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runHeroEntrance);
+  } else {
+    requestAnimationFrame(runHeroEntrance);
+  }
+
+  /* SCROLL REVEAL — add .sr to key elements */
+  var srTargets = [
+    '.section-head', '.step-box', '.meal-card', '.matters-item',
+    '.cook-order-grid > *', '.cust-form-wrap', '.research-inner > *',
+    '.final-cta > *', '.idea-inner'
+  ];
+  srTargets.forEach(function(sel) {
+    document.querySelectorAll(sel).forEach(function(el) { el.classList.add('sr'); });
+  });
+
+  var srObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e, i) {
+      if (e.isIntersecting) {
+        var el = e.target;
+        var delay = (el.dataset.srDelay || 0) + 'ms';
+        el.style.transitionDelay = delay;
+        el.classList.add('visible');
+        srObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  /* Stagger siblings */
+  ['step-box', 'meal-card', 'matters-item'].forEach(function(cls) {
+    document.querySelectorAll('.' + cls).forEach(function(el, i) {
+      el.dataset.srDelay = i * 90;
+    });
+  });
+
+  document.querySelectorAll('.sr').forEach(function(el) { srObserver.observe(el); });
+
+  /* IDEA LINES STAGGER */
+  var ideaObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.idea-line, .idea-divider').forEach(function(el, i) {
+          setTimeout(function() { el.classList.add('vis2'); }, i * 120);
+        });
+        ideaObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  var ideaSection = document.querySelector('.idea-section');
+  if (ideaSection) ideaObserver.observe(ideaSection);
+
+  if (reduced) return; /* Skip motion below for accessibility */
+
+  /* 3D TILT on meal cards */
+  document.querySelectorAll('.meal-card').forEach(function(card) {
+    card.addEventListener('mousemove', function(e) {
+      var r = card.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = 'translateY(-10px) scale(1.02) rotateX(' + (-y * 8) + 'deg) rotateY(' + (x * 8) + 'deg)';
+    });
+    card.addEventListener('mouseleave', function() {
+      card.style.transform = '';
+    });
+  });
+
+  /* 3D TILT on phone mockup */
+  var phone = document.querySelector('.phone-float');
+  if (phone) {
+    phone.addEventListener('mousemove', function(e) {
+      var r = phone.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      phone.style.transform = 'rotateX(' + (-y * 12) + 'deg) rotateY(' + (x * 12) + 'deg) translateY(-6px)';
+    });
+    phone.addEventListener('mouseleave', function() {
+      phone.style.transform = '';
+    });
+  }
+
+  /* HERO ORB PARALLAX */
+  var orbs = document.querySelectorAll('.hero-orb');
+  document.addEventListener('mousemove', function(e) {
+    var mx = (e.clientX / window.innerWidth - 0.5);
+    var my = (e.clientY / window.innerHeight - 0.5);
+    orbs.forEach(function(orb, i) {
+      var factor = (i + 1) * 12;
+      orb.style.transform = 'translate(' + (mx * factor) + 'px,' + (my * factor) + 'px)';
+    });
+  });
+
+  /* ANIMATED COUNTER */
+  function animateCounter(el) {
+    var target = parseInt(el.dataset.counter, 10);
+    var prefix = el.dataset.prefix || '';
+    var suffix = el.dataset.suffix || '';
+    var duration = 1400;
+    var start = null;
+    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+    function step(ts) {
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var val = Math.round(easeOut(progress) * target);
+      el.textContent = prefix + val.toLocaleString('en-IN') + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  var counterObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        animateCounter(e.target);
+        counterObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-counter]').forEach(function(el) { counterObserver.observe(el); });
+
+  /* COOKING STATUS CYCLE */
+  var statuses = ['Dal Makhani', 'Rajma Chawal', 'Chole Bhature', 'Palak Paneer', 'Biryani'];
+  var si = 0;
+  var liveEl = document.querySelector('.p-live-text');
+  if (liveEl) {
+    setInterval(function() {
+      si = (si + 1) % statuses.length;
+      liveEl.style.opacity = '0';
+      setTimeout(function() {
+        liveEl.textContent = '"Sunita Aunty started ' + statuses[si] + ' at 11:30 AM" 🔥';
+        liveEl.style.opacity = '1';
+      }, 350);
+    }, 3500);
+    liveEl.style.transition = 'opacity 0.35s ease';
+  }
+})();
 </script>
 </body>
 </html>
