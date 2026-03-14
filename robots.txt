@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /supabase-schema.sql
+
+Sitemap: https://maaseindia.com/sitemap.xml

@@ -38,9 +38,11 @@ create table if not exists waitlist (
   id uuid default gen_random_uuid() primary key,
   phone text not null,
   city text,
+  area text,
   type text default 'customer',
   joined_at timestamptz default now()
 );
+alter table waitlist add column if not exists area text;
 
 -- Enable Row Level Security (allow anonymous inserts / reads)
 alter table chef_applications enable row level security;

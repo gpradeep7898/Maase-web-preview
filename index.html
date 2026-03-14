@@ -7,17 +7,39 @@
   <meta name="description" content="Maase connects neighbourhood home kitchens with people who want fresh home cooked food." />
   <meta name="keywords" content="home cooked food, home chef, maase, bangalore food, homemade meals, earn from cooking" />
   <link rel="canonical" href="https://maaseindia.com" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="/logo.jpg" />
+  <link rel="apple-touch-icon" href="/logo.jpg" />
+  <meta name="theme-color" content="#F4A300" />
+
+  <!-- Open Graph / Social sharing -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://maaseindia.com" />
   <meta property="og:title" content="Maase — Authentic Home Cooked Food in Bangalore" />
   <meta property="og:description" content="Order authentic home-cooked meals. Or earn from your kitchen as a Maase home chef." />
   <meta property="og:site_name" content="Maase India" />
+  <meta property="og:image" content="https://maaseindia.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Maase — Fresh Home Cooked Food from Neighbourhood Kitchens" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://maaseindia.com/og-image.jpg" />
+
+  <!-- Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script> -->
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Maase India","url":"https://maaseindia.com","areaServed":"IN","contactPoint":{"@type":"ContactPoint","email":"connect.maase@gmail.com"}}</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.16/dist/lenis.min.js"></script>
 
   <style>
     :root {
@@ -217,6 +239,16 @@
     .c-error { display: none; background: #FEE2E2; border-radius: 12px; padding: 11px 16px; text-align: center; color: #DC2626; font-weight: 600; margin-top: 10px; font-size: 0.83rem; }
     .c-error.show { display: block; }
 
+    /* ── AREA AUTOCOMPLETE ── */
+    .area-wrap { position: relative; width: 100%; margin-bottom: 10px; }
+    .area-wrap .c-input { margin-bottom: 0; }
+    .area-dropdown { display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: #fff; border: 1.5px solid rgba(244,163,0,0.5); border-radius: 12px; box-shadow: 0 12px 32px rgba(92,58,33,0.14); z-index: 200; max-height: 220px; overflow-y: auto; }
+    .area-dropdown.open { display: block; }
+    .area-option { padding: 11px 16px; font-size: 0.9rem; color: var(--mocha); cursor: pointer; font-family: 'Poppins', sans-serif; transition: background 0.12s; border-bottom: 1px solid rgba(92,58,33,0.06); }
+    .area-option:last-child { border-bottom: none; }
+    .area-option:hover, .area-option.focused { background: var(--turmeric-light); color: var(--mocha); }
+    .area-option strong { color: var(--turmeric-deep); }
+
     /* ── FEATURES ── */
     .features-bg { background: var(--mocha); padding: 40px 0; }
     .features-bg .section-head h2 { color: var(--ivory); }
@@ -404,9 +436,7 @@
     @keyframes heroReveal { to { opacity: 1; transform: none; } }
 
     /* ── SCROLL REVEAL (sr) ── */
-    .sr { opacity: 0; transform: translateY(36px); transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); will-change: opacity,transform; }
     .sr.d1 { transition-delay: 0.08s; } .sr.d2 { transition-delay: 0.17s; } .sr.d3 { transition-delay: 0.26s; } .sr.d4 { transition-delay: 0.35s; }
-    .sr.visible { opacity: 1; transform: none; }
 
     /* ── 3D PHONE SHOWCASE ── */
     .phone-showcase { perspective: 1100px; }
@@ -630,12 +660,319 @@
       .share-row { flex-direction: column; }
       .share-row .btn { width: 100%; }
     }
+
+    /* ═══════════════════════════════════════════════
+       PREMIUM MOTION SYSTEM — ADDITIONS ONLY
+    ═══════════════════════════════════════════════ */
+
+    /* ── UPGRADED SCROLL REVEAL ── */
+    .sr {
+      opacity: 0;
+      transform: translateY(40px) scale(0.97);
+      transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.85s cubic-bezier(0.16,1,0.3,1);
+      will-change: transform, opacity;
+    }
+    .sr.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* ── HERO BACKGROUND MESH ── */
+    .hero { position: relative; }
+    .hero-mesh {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0;
+    }
+    .hero-mesh::before {
+      content: '';
+      position: absolute;
+      top: -20%; left: 10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(244,163,0,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: meshDrift1 18s ease-in-out infinite alternate;
+      filter: blur(40px);
+    }
+    .hero-mesh::after {
+      content: '';
+      position: absolute;
+      bottom: -10%; right: 5%;
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(92,58,33,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: meshDrift2 22s ease-in-out infinite alternate;
+      filter: blur(50px);
+    }
+    @keyframes meshDrift1 {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(40px, -30px) scale(1.08); }
+    }
+    @keyframes meshDrift2 {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(-30px, 20px) scale(1.06); }
+    }
+    .hero-shell { position: relative; z-index: 1; }
+
+    /* ── HERO AMBIENT PARTICLES ── */
+    .hero-particles {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+    }
+    .h-particle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--turmeric);
+      opacity: 0;
+      animation: particleDrift var(--dur, 8s) ease-in-out infinite var(--delay, 0s);
+    }
+    @keyframes particleDrift {
+      0%   { opacity: 0; transform: translateY(0) translateX(0) scale(0.5); }
+      20%  { opacity: var(--peak-op, 0.18); }
+      80%  { opacity: var(--peak-op, 0.18); }
+      100% { opacity: 0; transform: translateY(-80px) translateX(var(--dx, 20px)) scale(1); }
+    }
+
+    /* ── GLASS PANELS — MATTERS ITEMS ── */
+    .matters-item {
+      background: rgba(255,255,255,0.72) !important;
+      backdrop-filter: blur(16px) saturate(1.4);
+      -webkit-backdrop-filter: blur(16px) saturate(1.4);
+      border: 1px solid rgba(255,255,255,0.65) !important;
+      box-shadow: 0 4px 24px rgba(92,58,33,0.07), 0 1px 0 rgba(255,255,255,0.9) inset !important;
+      transition: transform 0.45s cubic-bezier(0.16,1,0.3,1),
+                  box-shadow 0.45s cubic-bezier(0.16,1,0.3,1) !important;
+    }
+    .matters-item:hover {
+      transform: translateY(-6px) scale(1.015) !important;
+      box-shadow: 0 20px 50px rgba(92,58,33,0.13), 0 1px 0 rgba(255,255,255,0.9) inset !important;
+    }
+
+    /* ── PREMIUM MEAL CARDS ── */
+    .meal-card {
+      transition: transform 0.45s cubic-bezier(0.16,1,0.3,1),
+                  box-shadow 0.45s cubic-bezier(0.16,1,0.3,1) !important;
+      will-change: transform;
+    }
+    .meal-card:hover {
+      box-shadow: 0 30px 70px rgba(92,58,33,0.18), 0 8px 20px rgba(244,163,0,0.10) !important;
+    }
+
+    /* ── STEP CARDS UPGRADE ── */
+    .step-box {
+      transition: transform 0.45s cubic-bezier(0.16,1,0.3,1),
+                  box-shadow 0.45s cubic-bezier(0.16,1,0.3,1) !important;
+      position: relative; overflow: hidden;
+    }
+    .step-box::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(244,163,0,0.07) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.45s ease; pointer-events: none;
+    }
+    .step-box:hover::before { opacity: 1; }
+    .step-box:hover {
+      transform: translateY(-8px) scale(1.02) !important;
+      box-shadow: 0 24px 56px rgba(92,58,33,0.14), 0 4px 14px rgba(244,163,0,0.10) !important;
+    }
+
+    /* ── ENHANCED MODAL BACKDROP ── */
+    .modal-overlay {
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      background: rgba(92,58,33,0.28) !important;
+    }
+    .modal-box {
+      transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1),
+                  opacity 0.4s ease;
+    }
+
+    /* ── SECTION GRADIENT CONTINUITY ── */
+    .section + .section {
+      background: linear-gradient(to bottom, rgba(248,243,232,0) 0%, rgba(248,243,232,0.4) 100%);
+    }
+
+    /* ── EARN CARD PREMIUM ── */
+    .earn-card {
+      transition: transform 0.45s cubic-bezier(0.16,1,0.3,1),
+                  box-shadow 0.45s cubic-bezier(0.16,1,0.3,1) !important;
+    }
+    .earn-card:hover {
+      transform: translateY(-8px) rotate(0.3deg) !important;
+      box-shadow: 0 32px 72px rgba(92,58,33,0.22) !important;
+    }
+
+    /* ── CTA BUTTONS DEPTH ── */
+    .btn-primary {
+      box-shadow: 0 10px 28px rgba(244,163,0,0.30), 0 2px 0 rgba(255,255,255,0.18) inset !important;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 18px 40px rgba(244,163,0,0.40), 0 2px 0 rgba(255,255,255,0.18) inset !important;
+      transform: translateY(-3px) !important;
+    }
+
+    /* ── IDEA SECTION IMAGE HOVER ── */
+    .idea-img-wrap img {
+      transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.6s ease;
+    }
+    .idea-img-wrap:hover img {
+      transform: scale(1.025) translateY(-4px);
+      box-shadow: 0 32px 72px rgba(92,58,33,0.18);
+    }
+
+    /* ── CINEMATIC NAV ── */
+    .nav {
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+    .nav.scrolled {
+      background: rgba(248,243,232,0.97) !important;
+      box-shadow: 0 4px 32px rgba(92,58,33,0.08) !important;
+    }
+
+    /* ── MOBILE: reduce motion complexity ── */
+    @media (max-width: 900px) {
+      .hero-mesh::before, .hero-mesh::after { display: none; }
+      .h-particle { display: none; }
+      .sr {
+        transform: translateY(24px) scale(0.99);
+        transition-duration: 0.6s;
+      }
+      .matters-item { backdrop-filter: none; -webkit-backdrop-filter: none; }
+    }
+
+    /* ── PREFERS-REDUCED-MOTION: override all ── */
+    @media (prefers-reduced-motion: reduce) {
+      .hero-mesh::before, .hero-mesh::after,
+      .h-particle, .hero-orb { animation: none !important; }
+      .sr { transform: none !important; transition: opacity 0.3s ease !important; }
+    }
+
+    /* ═══════════════════════════════════════════════
+       COMPREHENSIVE MOBILE FIXES
+    ═══════════════════════════════════════════════ */
+
+    /* Prevent horizontal overflow globally */
+    html, body { overflow-x: hidden; }
+
+    /* ── PHONE MOCKUP: fix actual layout height at 560px ── */
+    /* transform: scale() doesn't shrink layout space, only visual size */
+    @media(max-width:560px) {
+      .phone {
+        width: 210px !important;
+        height: 418px !important;
+        transform: none !important;
+        margin-bottom: 0 !important;
+        border-radius: 34px;
+      }
+      .phone-showcase { margin-bottom: 16px; }
+      /* Keep float animation working after overriding transform */
+      .phone-float { animation: floatMobile 3s ease-in-out infinite; }
+      @keyframes floatMobile { 0%,100%{transform:translateY(-6px)} 50%{transform:translateY(6px)} }
+    }
+
+    /* ── STACKED IMAGE HEIGHT CONTROL ── */
+    @media(max-width:900px) {
+      /* Idea section (dark bg) — constrain image height when stacked */
+      .idea-img-wrap { max-height: 300px; }
+      .idea-img-wrap img { height: 300px !important; object-fit: cover; }
+      /* Order section delivery image */
+      .cook-order-grid > div:last-child img {
+        max-height: 280px; width: auto; max-width: 100%; margin: 0 auto; display: block;
+      }
+    }
+    @media(max-width:560px) {
+      .idea-img-wrap { max-height: 220px; }
+      .idea-img-wrap img { height: 220px !important; }
+      .cook-order-grid > div:last-child img { max-height: 200px; }
+    }
+
+    /* ── NAV HAMBURGER MENU ── */
+    @media(max-width:900px) {
+      /* Ensure nav is a positioned parent for the dropdown */
+      .nav { position: sticky; }
+      /* Dropdown must clear the nav and overlay content */
+      .nav-links.open { box-shadow: 0 12px 32px rgba(92,58,33,0.12); }
+    }
+
+    /* ── AREA AUTOCOMPLETE ON MOBILE ── */
+    @media(max-width:560px) {
+      .area-dropdown { max-height: 180px; }
+      .area-option { padding: 13px 16px; font-size: 0.95rem; } /* bigger touch target */
+    }
+
+    /* ── TOUCH: disable 3D tilt hover ghost states ── */
+    @media(hover: none) {
+      .meal-card:hover,
+      .step-box:hover,
+      .matters-item:hover,
+      .earn-card:hover { transform: none !important; box-shadow: var(--shadow) !important; }
+      .meal-card:hover .meal-card-top img { transform: none !important; }
+      /* Keep transition smooth for tap feedback */
+      .meal-card, .step-box, .matters-item, .earn-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+      }
+    }
+
+    /* ── HERO TEXT SIZING on narrow screens ── */
+    @media(max-width:400px) {
+      .hero h1 { font-size: 1.65rem; }
+      .hero-sub { font-size: 0.9rem; }
+      .trust-pill { font-size: 0.72rem; padding: 5px 9px; }
+      .hero-chip { font-size: 0.72rem; padding: 5px 9px; }
+    }
+
+    /* ── MEAL CARD IMAGE HEIGHT on single column ── */
+    @media(max-width:560px) {
+      .meal-card-top { height: 200px; }
+    }
+
+    /* ── SECTION HEADS on mobile ── */
+    @media(max-width:560px) {
+      .section-head h2 { font-size: clamp(1.5rem, 6vw, 2rem); }
+      .section-head { margin-bottom: 20px; }
+    }
+
+    /* ── NOMINATE SECTION on mobile ── */
+    @media(max-width:560px) {
+      .nom-card { padding: 20px 16px; }
+      .nominate-badge { font-size: 0.78rem; padding: 6px 12px; }
+      .nom-features { gap: 8px; }
+    }
+
+    /* ── EARN CARD on mobile ── */
+    @media(max-width:560px) {
+      .earn-card { padding: 20px 16px; }
+    }
+
+    /* ── COOK ORDER GRID: image order on mobile ── */
+    @media(max-width:900px) {
+      /* Show image below text on mobile for better reading flow */
+      .cook-order-grid { display: flex; flex-direction: column; gap: 24px; }
+    }
+
+    /* ── RESEARCH BUTTONS full width on mobile ── */
+    @media(max-width:560px) {
+      .research-btns .btn { width: 100%; justify-content: center; text-align: center; }
+      .final-cta-btns .btn { width: 100%; justify-content: center; }
+    }
+
+    /* ── MODAL on mobile ── */
+    @media(max-width:560px) {
+      /* Cuisine chips scroll horizontally instead of wrapping awkwardly */
+      .cuisine-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+      .cuisine-chip { flex-shrink: 0; }
+      /* Star rating spacing */
+      .star-row { justify-content: space-between; }
+      .star-btn { font-size: 2rem; }
+    }
+
+    /* ── FOOTER on mobile ── */
+    @media(max-width:560px) {
+      .footer-inner { flex-direction: column; gap: 12px; }
+    }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav class="nav">
+<nav class="nav" id="mainNav">
   <div class="container nav-inner">
     <a href="#top" class="brand">
       <div class="brand-logo"><img src="logo.jpg" alt="Maase Logo" /></div>
@@ -669,6 +1006,8 @@
     <div class="hero-orb hero-orb-2"></div>
     <div class="hero-orb hero-orb-3"></div>
   </div>
+  <div class="hero-mesh" aria-hidden="true"></div>
+  <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
   <div class="container hero-shell">
     <div>
       <h1 class="hero-anim d1">One extra meal from Maa can become income.</h1>
@@ -723,7 +1062,7 @@
         </div>
       </div>
       <div class="idea-img-wrap">
-        <img src="indian-kitchen.jpg" alt="Indian home kitchen" />
+        <img src="indian-kitchen.jpg" alt="Indian home kitchen" loading="lazy" />
       </div>
     </div>
   </div>
@@ -757,7 +1096,7 @@
     <div class="meal-grid">
       <div class="meal-card fade d1">
         <div class="meal-card-top">
-          <img src="meal-dal-makhani.jpg" alt="Dal Makhani + Rotis" />
+          <img src="meal-dal-makhani.jpg" alt="Dal Makhani + Rotis" loading="lazy" />
           <span class="meal-card-tag">🟢 Cooked fresh today</span>
         </div>
         <div class="meal-card-body">
@@ -771,7 +1110,7 @@
       </div>
       <div class="meal-card fade d2">
         <div class="meal-card-top">
-          <img src="meal-andhra-chicken.jpg" alt="Andhra Chicken + Rice" />
+          <img src="meal-andhra-chicken.jpg" alt="Andhra Chicken + Rice" loading="lazy" />
           <span class="meal-card-tag">🟢 Cooked fresh today</span>
         </div>
         <div class="meal-card-body">
@@ -872,14 +1211,17 @@
         </p>
         <div style="display:flex;flex-direction:column;gap:12px;">
           <input class="c-input" id="custPhone" type="tel" placeholder="Your phone number" maxlength="10" />
-          <input class="c-input" id="custArea" type="text" placeholder="Your area (e.g. Koramangala)" />
+          <div class="area-wrap">
+            <input class="c-input" id="custArea" type="text" placeholder="Your area in Bangalore" autocomplete="off" oninput="filterAreas(this)" onfocus="filterAreas(this)" onkeydown="areaKeyNav(event)" />
+            <ul class="area-dropdown" id="areaDropdown"></ul>
+          </div>
           <button class="btn btn-primary btn-lg" onclick="joinWaitlist()">Get Home Food →</button>
           <div class="c-success" id="custOk">✓ You're on the list! We'll text you when we launch near you.</div>
           <div class="c-error" id="custErr">Please enter a valid phone number.</div>
         </div>
       </div>
       <div class="fade d2" style="display:flex;align-items:center;justify-content:center;">
-        <img src="delivery-hero.jpg" alt="Maase delivery" style="width:100%;max-width:480px;border-radius:20px;object-fit:cover;display:block;" />
+        <img src="delivery-hero.jpg" alt="Maase delivery" loading="lazy" style="width:100%;max-width:480px;border-radius:20px;object-fit:cover;display:block;" />
       </div>
     </div>
   </div>
@@ -1164,8 +1506,9 @@ async function submitChefApp() {
   btn.textContent = 'Submitting...'; btn.disabled = true;
   var refCode = makeRefCode(v('cf_name'));
   var payload = { name: v('cf_name'), phone: v('cf_phone'), city: 'Bangalore', area: v('cf_area'), cuisines: cuisines, signature_dishes: v('cf_dishes'), experience: document.getElementById('cf_experience').value, daily_capacity: document.getElementById('cf_capacity').value, kitchen_type: document.getElementById('cf_kitchen').value, self_rating: chefRating, notes: v('cf_notes'), referral_code: refCode, referred_by: new URLSearchParams(window.location.search).get('ref') || null, submitted_at: new Date().toISOString() };
-  try { await sb.from('chef_applications').insert([payload]); } catch(e) { console.warn(e.message); }
+  var { error: insErr } = await sb.from('chef_applications').insert([payload]);
   btn.textContent = 'Submit Application 🍱'; btn.disabled = false;
+  if (insErr) { errEl.textContent = 'Something went wrong. Please try again.'; errEl.classList.add('show'); return; }
   document.getElementById('refCode').textContent = refCode;
   var refUrl = 'https://maaseindia.com?ref=' + refCode;
   document.getElementById('refLink').textContent = refUrl;
@@ -1181,7 +1524,8 @@ async function submitNomination() {
   var cookName = document.getElementById('nomCookName').value.trim();
   var cookPhone = document.getElementById('nomCookPhone').value.trim();
   if (!cookName || !cookPhone) { errEl.textContent = "Enter the cook's name and phone."; errEl.classList.add('show'); return; }
-  try { await sb.from('chef_nominations').insert([{ nominator_name: document.getElementById('nomYourName').value.trim(), cook_name: cookName, cook_phone: cookPhone, reason: document.getElementById('nomReason').value.trim(), submitted_at: new Date().toISOString() }]); } catch(e) { console.warn(e.message); }
+  var { error: nomErr } = await sb.from('chef_nominations').insert([{ nominator_name: document.getElementById('nomYourName').value.trim(), cook_name: cookName, cook_phone: cookPhone, reason: document.getElementById('nomReason').value.trim(), submitted_at: new Date().toISOString() }]);
+  if (nomErr) { errEl.textContent = 'Something went wrong. Please try again.'; errEl.classList.add('show'); return; }
   okEl.classList.add('show'); loadMetrics();
 }
 
@@ -1190,12 +1534,117 @@ async function joinWaitlist() {
   var okEl = document.getElementById('custOk'), errEl = document.getElementById('custErr');
   okEl.classList.remove('show'); errEl.classList.remove('show');
   var phone = document.getElementById('custPhone').value.trim();
-  if (!phone || phone.length < 10) { errEl.classList.add('show'); return; }
-  try { await sb.from('waitlist').insert([{ phone: phone, city: 'Bangalore', area: document.getElementById('custArea').value.trim(), type: 'customer', joined_at: new Date().toISOString() }]); } catch(e) { console.warn(e.message); }
+  if (!phone || phone.length < 10) { errEl.textContent = 'Please enter a valid 10-digit phone number.'; errEl.classList.add('show'); return; }
+  var area = document.getElementById('custArea').value.trim();
+  var payload = { phone: phone, city: 'Bangalore', type: 'customer' };
+  var { error: wlErr } = await sb.from('waitlist').insert([payload]);
+  if (wlErr) {
+    console.error('Waitlist insert error:', wlErr);
+    errEl.textContent = wlErr.code === '23505' ? 'This number is already on the list!' : 'Something went wrong (' + (wlErr.code || 'err') + '). Please try again.';
+    errEl.classList.add('show'); return;
+  }
+  closeAreaDropdown();
   okEl.classList.add('show'); loadMetrics();
 }
 
+/* ── BANGALORE AREA AUTOCOMPLETE ── */
+var BLR_LOCALITIES = [
+  'Koramangala','Indiranagar','HSR Layout','Jayanagar','BTM Layout','Whitefield',
+  'Banaswadi','Marathahalli','Electronic City','JP Nagar','Rajajinagar','Yelahanka',
+  'Malleshwaram','Basavanagudi','Banashankari','Hebbal','KR Puram','Sarjapur Road',
+  'Bellandur','Domlur','Frazer Town','Richmond Town','MG Road','Brigade Road',
+  'Shivajinagar','Sadashivanagar','Sanjayanagar','RT Nagar','Bannerghatta Road',
+  'Kengeri','Nagarbhavi','Vijayanagar','Peenya','Yeshwanthpur','Old Airport Road',
+  'HAL','Brookefield','ITPL Road','Kadugodi','Horamavu','Kalyan Nagar','HBR Layout',
+  'Kammanahalli','Ramamurthy Nagar','New Thippasandra','Old Madras Road',
+  'Mahadevapura','Manyata Tech Park','Nagawara','Thanisandra','Hennur',
+  'Bellary Road','Devanahalli','Yelahanka New Town','Amruthahalli','Sahakara Nagar',
+  'Jalahalli','MS Ramaiah','Mathikere','BEL Road','Malleswaram','Mahalakshmi Layout',
+  'RR Nagar','Uttarahalli','Mysore Road','Nayandahalli','Subramanyapura',
+  'Padmanabhanagar','Kumaraswamy Layout','Gottigere','Hulimavu','Arekere',
+  'Bommasandra','Jigani','Electronic City Phase 1','Electronic City Phase 2',
+  'Haralur Road','Carmelaram','Gunjur','Varthur','Hoodi','Outer Ring Road',
+  'Kadubeesanahalli','Panathur','Kasavanahalli','Kaikondrahalli','Iblur',
+  'Agara','Doddanekundi','Thubarahalli','Devarabisanahalli','Kundalahalli',
+  'Hosa Road','Chandapura','Begur','Hongasandra','Akshayanagar','Parappana Agrahara',
+  'Bommanahalli','Kudlu Gate','JP Nagar 1st Phase','JP Nagar 2nd Phase',
+  'JP Nagar 3rd Phase','JP Nagar 7th Phase','Jayanagar 4th Block','Jayanagar 9th Block',
+  'Koramangala 1st Block','Koramangala 5th Block','Koramangala 7th Block',
+  'Indiranagar 1st Stage','Indiranagar 2nd Stage','HSR Layout Sector 1',
+  'HSR Layout Sector 2','HSR Layout Sector 7','BTM 1st Stage','BTM 2nd Stage',
+  'Whitefield Main Road','Prestige Tech Park','Bagmane Tech Park','Ecospace',
+  'Rajajinagar 1st Block','Rajajinagar 4th Block','Vijayanagar 1st Stage',
+  'Banashankari 2nd Stage','Banashankari 3rd Stage'
+];
+var areaFocusIdx = -1;
+
+function filterAreas(input) {
+  var q = input.value.trim().toLowerCase();
+  var dd = document.getElementById('areaDropdown');
+  areaFocusIdx = -1;
+  if (!q) { dd.innerHTML = ''; dd.classList.remove('open'); return; }
+  var matches = BLR_LOCALITIES.filter(function(a) { return a.toLowerCase().indexOf(q) !== -1; }).slice(0, 8);
+  if (!matches.length) { dd.innerHTML = ''; dd.classList.remove('open'); return; }
+  dd.innerHTML = matches.map(function(a) {
+    var idx = a.toLowerCase().indexOf(q);
+    var highlighted = a.slice(0, idx) + '<strong>' + a.slice(idx, idx + q.length) + '</strong>' + a.slice(idx + q.length);
+    return '<li class="area-option" onclick="selectArea(\'' + a.replace(/'/g, "\\'") + '\')">' + highlighted + '</li>';
+  }).join('');
+  dd.classList.add('open');
+}
+
+function selectArea(name) {
+  document.getElementById('custArea').value = name;
+  closeAreaDropdown();
+}
+
+function closeAreaDropdown() {
+  var dd = document.getElementById('areaDropdown');
+  if (dd) { dd.innerHTML = ''; dd.classList.remove('open'); }
+  areaFocusIdx = -1;
+}
+
+function areaKeyNav(e) {
+  var dd = document.getElementById('areaDropdown');
+  var items = dd.querySelectorAll('.area-option');
+  if (!items.length) return;
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    areaFocusIdx = Math.min(areaFocusIdx + 1, items.length - 1);
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    areaFocusIdx = Math.max(areaFocusIdx - 1, 0);
+  } else if (e.key === 'Enter' && areaFocusIdx >= 0) {
+    e.preventDefault();
+    items[areaFocusIdx].click(); return;
+  } else if (e.key === 'Escape') {
+    closeAreaDropdown(); return;
+  }
+  items.forEach(function(li, i) { li.classList.toggle('focused', i === areaFocusIdx); });
+  if (areaFocusIdx >= 0) items[areaFocusIdx].scrollIntoView({ block: 'nearest' });
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.area-wrap')) closeAreaDropdown();
+});
+
 function openNominate() { document.getElementById('nominate').scrollIntoView({ behavior: 'smooth' }); }
+
+/* ── LENIS SMOOTH SCROLL ── */
+(function initLenis() {
+  if (typeof Lenis === 'undefined') { console.warn('Lenis not loaded'); return; }
+  var lenis = new Lenis({ duration: 1.4, easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }, smoothWheel: true, syncTouch: false });
+  function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var href = this.getAttribute('href');
+      if (href === '#') return;
+      var target = document.querySelector(href);
+      if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: -80, duration: 1.4 }); }
+    });
+  });
+})();
 
 /* ── SCROLL ANIMATIONS ── */
 var io = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('vis'); }); }, { threshold: 0.12 });
@@ -1272,43 +1721,49 @@ fixSteps(); window.addEventListener('resize', fixSteps);
 
   if (reduced) return; /* Skip motion below for accessibility */
 
-  /* 3D TILT on meal cards */
-  document.querySelectorAll('.meal-card').forEach(function(card) {
-    card.addEventListener('mousemove', function(e) {
-      var r = card.getBoundingClientRect();
-      var x = (e.clientX - r.left) / r.width - 0.5;
-      var y = (e.clientY - r.top) / r.height - 0.5;
-      card.style.transform = 'translateY(-10px) scale(1.02) rotateX(' + (-y * 8) + 'deg) rotateY(' + (x * 8) + 'deg)';
-    });
-    card.addEventListener('mouseleave', function() {
-      card.style.transform = '';
-    });
-  });
+  /* Touch detection — skip all mouse-based 3D/parallax on touch devices */
+  var isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+  var isDesktop = !isTouch && window.innerWidth >= 900;
 
-  /* 3D TILT on phone mockup */
-  var phone = document.querySelector('.phone-float');
-  if (phone) {
-    phone.addEventListener('mousemove', function(e) {
-      var r = phone.getBoundingClientRect();
-      var x = (e.clientX - r.left) / r.width - 0.5;
-      var y = (e.clientY - r.top) / r.height - 0.5;
-      phone.style.transform = 'rotateX(' + (-y * 12) + 'deg) rotateY(' + (x * 12) + 'deg) translateY(-6px)';
+  if (isDesktop) {
+    /* 3D TILT on meal cards */
+    document.querySelectorAll('.meal-card').forEach(function(card) {
+      card.addEventListener('mousemove', function(e) {
+        var r = card.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5;
+        var y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = 'translateY(-10px) scale(1.02) rotateX(' + (-y * 8) + 'deg) rotateY(' + (x * 8) + 'deg)';
+      });
+      card.addEventListener('mouseleave', function() {
+        card.style.transform = '';
+      });
     });
-    phone.addEventListener('mouseleave', function() {
-      phone.style.transform = '';
+
+    /* 3D TILT on phone mockup */
+    var phone = document.querySelector('.phone-float');
+    if (phone) {
+      phone.addEventListener('mousemove', function(e) {
+        var r = phone.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5;
+        var y = (e.clientY - r.top) / r.height - 0.5;
+        phone.style.transform = 'rotateX(' + (-y * 12) + 'deg) rotateY(' + (x * 12) + 'deg) translateY(-6px)';
+      });
+      phone.addEventListener('mouseleave', function() {
+        phone.style.transform = '';
+      });
+    }
+
+    /* HERO ORB PARALLAX */
+    var orbs = document.querySelectorAll('.hero-orb');
+    document.addEventListener('mousemove', function(e) {
+      var mx = (e.clientX / window.innerWidth - 0.5);
+      var my = (e.clientY / window.innerHeight - 0.5);
+      orbs.forEach(function(orb, i) {
+        var factor = (i + 1) * 12;
+        orb.style.transform = 'translate(' + (mx * factor) + 'px,' + (my * factor) + 'px)';
+      });
     });
   }
-
-  /* HERO ORB PARALLAX */
-  var orbs = document.querySelectorAll('.hero-orb');
-  document.addEventListener('mousemove', function(e) {
-    var mx = (e.clientX / window.innerWidth - 0.5);
-    var my = (e.clientY / window.innerHeight - 0.5);
-    orbs.forEach(function(orb, i) {
-      var factor = (i + 1) * 12;
-      orb.style.transform = 'translate(' + (mx * factor) + 'px,' + (my * factor) + 'px)';
-    });
-  });
 
   /* ANIMATED COUNTER */
   function animateCounter(el) {
@@ -1353,6 +1808,58 @@ fixSteps(); window.addEventListener('resize', fixSteps);
     }, 3500);
     liveEl.style.transition = 'opacity 0.35s ease';
   }
+})();
+
+/* ── HERO AMBIENT PARTICLES ── */
+(function spawnParticles() {
+  var container = document.getElementById('heroParticles'); if (!container) return;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced || window.innerWidth < 900) return;
+  var count = 12;
+  for (var i = 0; i < count; i++) {
+    var p = document.createElement('div');
+    p.className = 'h-particle';
+    var size = 2 + Math.random() * 3;
+    p.style.cssText = [
+      'width:' + size + 'px',
+      'height:' + size + 'px',
+      'left:' + (5 + Math.random() * 90) + '%',
+      'top:' + (20 + Math.random() * 70) + '%',
+      '--dur:' + (7 + Math.random() * 8) + 's',
+      '--delay:-' + (Math.random() * 10) + 's',
+      '--dx:' + ((Math.random() - 0.5) * 60) + 'px',
+      '--peak-op:' + (0.08 + Math.random() * 0.10),
+    ].join(';');
+    container.appendChild(p);
+  }
+})();
+
+/* ── NAV SCROLL CLASS ── */
+(function() {
+  var nav = document.getElementById('mainNav');
+  if (!nav) return;
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+})();
+
+/* ── EXTENDED CURSOR PARALLAX (hero only) ── */
+(function() {
+  var hero = document.querySelector('.hero');
+  if (!hero) return;
+  var heroShell = hero.querySelector('.hero-shell');
+  var mesh = hero.querySelector('.hero-mesh');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced || window.innerWidth < 900) return;
+  hero.addEventListener('mousemove', function(e) {
+    var rect = hero.getBoundingClientRect();
+    var mx = (e.clientX - rect.left) / rect.width - 0.5;
+    var my = (e.clientY - rect.top) / rect.height - 0.5;
+    if (mesh) mesh.style.transform = 'translate(' + (mx * 18) + 'px,' + (my * 10) + 'px)';
+  });
+  hero.addEventListener('mouseleave', function() {
+    if (mesh) mesh.style.transform = '';
+  });
 })();
 </script>
 </body>

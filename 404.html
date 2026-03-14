@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found | Maase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #fffdf8 0%, #F8F3E8 100%);
+      color: #5C3A21;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+    .wrap { max-width: 480px; }
+    .logo { width: 72px; height: 72px; border-radius: 18px; object-fit: cover; margin: 0 auto 28px; display: block; box-shadow: 0 8px 24px rgba(92,58,33,0.18); }
+    h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; margin-bottom: 12px; letter-spacing: -0.03em; }
+    p { color: #7b573e; line-height: 1.75; font-size: 1rem; margin-bottom: 32px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(180deg, #F4A300, #D98D00);
+      color: #fff; font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: 0.95rem; padding: 13px 28px; border-radius: 999px;
+      text-decoration: none; border: none; cursor: pointer;
+      box-shadow: 0 10px 28px rgba(244,163,0,0.30);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(244,163,0,0.38); }
+    .tagline { margin-top: 24px; font-size: 0.82rem; color: #7b573e; opacity: 0.7; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <img src="/logo.jpg" alt="Maase" class="logo" />
+    <h1>Page not found</h1>
+    <p>Looks like this page took a wrong turn somewhere. Let's get you back to where the home-cooked food is.</p>
+    <a href="/" class="btn">Go back home →</a>
+    <p class="tagline">One Extra Meal, From Maa</p>
+  </div>
+</body>
+</html>
