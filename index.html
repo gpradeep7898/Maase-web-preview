@@ -885,6 +885,35 @@
   </div>
 </section>
 
+<!-- NOMINATE A COOK -->
+<section class="nominate-section" id="nominate">
+  <div class="container">
+    <div class="nominate-inner">
+      <div>
+        <span class="nominate-badge">👩‍🍳 Nominate a Cook</span>
+        <h2>Know a great home cook?</h2>
+        <p>Do you know someone whose cooking deserves to be shared? Nominate them to be one of the first home chefs on Maase.</p>
+        <ul class="nom-features">
+          <li><span>✓</span><span>They don't need a restaurant or commercial kitchen</span></li>
+          <li><span>✓</span><span>They just need to cook what they already cook at home</span></li>
+          <li><span>✓</span><span>We'll reach out and help them get started</span></li>
+        </ul>
+      </div>
+      <div class="nom-card">
+        <h3>Nominate someone you know</h3>
+        <p>Tell us about a great home cook in your neighbourhood.</p>
+        <input class="c-input" id="nomYourName" type="text" placeholder="Your name" />
+        <input class="c-input" id="nomCookName" type="text" placeholder="Cook's name *" />
+        <input class="c-input" id="nomCookPhone" type="tel" placeholder="Cook's phone number *" maxlength="10" />
+        <textarea class="c-textarea" id="nomReason" placeholder="Why should they be on Maase? (optional)" rows="3"></textarea>
+        <button class="btn btn-primary" style="width:100%" onclick="submitNomination()">Nominate This Cook 🍱</button>
+        <div class="c-success" id="nomOk">✓ Nomination submitted! We'll reach out to them soon.</div>
+        <div class="c-error" id="nomErr"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SECTION 8: RESEARCH -->
 <section class="research-section" id="research">
   <div class="container">
