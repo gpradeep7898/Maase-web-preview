@@ -216,6 +216,23 @@
     .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.73rem; color: rgba(248,243,232,0.5); }
     .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
 
+    /* ── ECO PACKAGING STRIP ── */
+    .eco-strip { background: linear-gradient(135deg, #f0f7f0 0%, #e8f5e8 50%, #f4faf0 100%); border-top: 1px solid rgba(34,139,34,0.10); border-bottom: 1px solid rgba(34,139,34,0.10); padding: 48px 0; }
+    .eco-inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; max-width: 1100px; margin: 0 auto; }
+    .eco-text { }
+    .eco-badge { display: inline-flex; align-items: center; gap: 7px; background: rgba(34,139,34,0.10); border: 1px solid rgba(34,139,34,0.20); border-radius: 999px; padding: 6px 14px; font-size: 0.78rem; font-weight: 700; color: #2d6a2d; margin-bottom: 18px; }
+    .eco-text h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--mocha); margin-bottom: 14px; line-height: 1.25; }
+    .eco-text p { font-size: 0.97rem; color: var(--mocha-soft); line-height: 1.8; max-width: 480px; }
+    .eco-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .eco-pill { display: inline-flex; align-items: center; gap: 7px; background: rgba(255,255,255,0.80); border: 1px solid rgba(34,139,34,0.18); border-radius: 999px; padding: 8px 16px; font-size: 0.82rem; font-weight: 600; color: #2d6a2d; box-shadow: 0 2px 8px rgba(34,139,34,0.07); }
+    .eco-stats { display: flex; flex-direction: column; gap: 16px; }
+    .eco-stat { background: rgba(255,255,255,0.85); border: 1px solid rgba(34,139,34,0.12); border-radius: 20px; padding: 22px 24px; box-shadow: 0 4px 20px rgba(34,139,34,0.06); }
+    .eco-stat-icon { font-size: 1.6rem; margin-bottom: 8px; }
+    .eco-stat-title { font-weight: 700; font-size: 0.95rem; color: #2d6a2d; margin-bottom: 4px; }
+    .eco-stat-desc { font-size: 0.82rem; color: var(--mocha-soft); line-height: 1.6; }
+    @media(max-width:900px) { .eco-inner { grid-template-columns: 1fr; gap: 28px; } }
+    @media(max-width:560px) { .eco-strip { padding: 32px 0; } .eco-text h2 { font-size: 1.5rem; } }
+
     /* ── NOMINATE ── */
     .nominate-section { background: linear-gradient(135deg, #fff8e8, rgba(244,163,0,0.05)); padding: 40px 0; }
     .nominate-inner { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
@@ -1222,6 +1239,36 @@
       </div>
       <div class="fade d2" style="display:flex;align-items:center;justify-content:center;">
         <img src="delivery-v2.jpg" alt="Maase delivery" loading="lazy" style="width:100%;max-width:480px;border-radius:20px;object-fit:cover;display:block;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ECO PACKAGING -->
+<section class="eco-strip">
+  <div class="container">
+    <div class="eco-inner">
+      <div class="eco-text fade d1">
+        <span class="eco-badge">🌿 Sustainable by default</span>
+        <h2>Every meal arrives in 100% biodegradable packaging.</h2>
+        <p>No plastic, no compromise. Because when thousands of small meals choose the planet, the impact becomes enormous.</p>
+        <div class="eco-pills">
+          <span class="eco-pill">🌱 Zero plastic. Ever.</span>
+          <span class="eco-pill">♻️ 100% biodegradable</span>
+          <span class="eco-pill">🌍 Good for the planet</span>
+        </div>
+      </div>
+      <div class="eco-stats fade d2">
+        <div class="eco-stat">
+          <div class="eco-stat-icon">📦</div>
+          <div class="eco-stat-title">Biodegradable packaging</div>
+          <div class="eco-stat-desc">Every meal is packed in materials that return to the earth — leaves, bagasse, or recycled paper. Never plastic.</div>
+        </div>
+        <div class="eco-stat">
+          <div class="eco-stat-icon">🌍</div>
+          <div class="eco-stat-title">A better planet, one meal at a time</div>
+          <div class="eco-stat-desc">Small choices, compounded across thousands of meals every day, create enormous change. Delivered in 100% biodegradable packaging. Good for you. Good for the planet.</div>
+        </div>
       </div>
     </div>
   </div>
