@@ -309,14 +309,17 @@
     .hero-chip { padding: 6px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; background: rgba(244,163,0,0.12); border: 1px solid rgba(244,163,0,0.25); color: var(--turmeric-deep); }
 
     /* ── IDEA SECTION ── */
-    .idea-section { background: var(--mocha); padding: 80px 0; }
-    .idea-inner { max-width: 720px; margin: 0 auto; text-align: center; }
-    .idea-inner h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--ivory); margin-bottom: 40px; line-height: 1.2; }
-    .idea-lines { display: flex; flex-direction: column; gap: 6px; }
-    .idea-line { font-size: 1.05rem; color: rgba(248,243,232,0.78); line-height: 1.7; }
+    .idea-section { background: var(--mocha); padding: 48px 0; }
+    .idea-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; max-width: 1180px; margin: 0 auto; }
+    .idea-text h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); color: var(--ivory); margin-bottom: 20px; line-height: 1.2; }
+    .idea-lines { display: flex; flex-direction: column; gap: 5px; }
+    .idea-line { font-size: 0.97rem; color: rgba(248,243,232,0.78); line-height: 1.6; }
     .idea-line.bold { font-weight: 700; color: var(--ivory); }
-    .idea-line.turmeric { color: var(--turmeric); font-weight: 700; font-family: 'Playfair Display', serif; font-size: 1.25rem; font-style: italic; }
-    .idea-divider { width: 48px; height: 2px; background: rgba(244,163,0,0.3); margin: 8px auto; }
+    .idea-line.turmeric { color: var(--turmeric); font-weight: 700; font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; }
+    .idea-divider { width: 40px; height: 2px; background: rgba(244,163,0,0.3); margin: 5px 0; }
+    .idea-img-wrap { border-radius: 20px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.35); }
+    .idea-img-wrap img { width: 100%; display: block; object-fit: cover; }
+    @media(max-width:900px) { .idea-inner { grid-template-columns: 1fr; gap: 24px; } }
 
     /* ── MEAL CARDS ── */
     .meal-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
@@ -475,7 +478,7 @@
     /* ── IDEA LINE STAGGERED REVEAL ── */
     .idea-line { opacity: 0; transform: translateY(14px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .idea-line.vis2 { opacity: 1; transform: none; }
-    .idea-divider { transform: scaleX(0); transition: transform 0.65s cubic-bezier(0.16,1,0.3,1); transform-origin: center; }
+    .idea-divider { transform: scaleX(0); transition: transform 0.65s cubic-bezier(0.16,1,0.3,1); transform-origin: left; }
     .idea-divider.vis2 { transform: scaleX(1); }
 
     /* ── MODAL SPRING ENTRANCE ── */
@@ -498,10 +501,7 @@
     .cook-order-grid .earn-card:hover { transform: translateY(-6px) rotate(0.8deg); box-shadow: 0 40px 80px rgba(244,163,0,0.26); }
 
     /* ── IDEA SECTION WIDER ── */
-    .idea-section { padding: 40px 0; }
-    .idea-inner { max-width: 800px; }
-    .idea-line { font-size: 1.05rem; }
-    .idea-line.turmeric { font-size: 1.2rem; }
+    .idea-section { padding: 48px 0; }
 
     /* ── FOOTER ── */
     footer { padding: 36px 0 48px; }
@@ -705,20 +705,25 @@
 <section class="idea-section" id="why">
   <div class="container">
     <div class="idea-inner fade">
-      <h2>Every Indian kitchen already has the ingredients for income.</h2>
-      <div class="idea-lines">
-        <p class="idea-line">Every day, millions of Indian mothers cook incredible food for their families.</p>
-        <div class="idea-divider"></div>
-        <p class="idea-line">The stove is already on.</p>
-        <p class="idea-line">The spices are already measured.</p>
-        <p class="idea-line">The cooking is already happening.</p>
-        <div class="idea-divider"></div>
-        <p class="idea-line">Maase is built on a simple idea:</p>
-        <p class="idea-line turmeric">What if cooking just one extra portion could create income?</p>
-        <div class="idea-divider"></div>
-        <p class="idea-line">No restaurant.</p>
-        <p class="idea-line">No commercial kitchen.</p>
-        <p class="idea-line bold">Just real food from real homes.</p>
+      <div class="idea-text">
+        <h2>Every Indian kitchen already has the ingredients for income.</h2>
+        <div class="idea-lines">
+          <p class="idea-line">Every day, millions of Indian mothers cook incredible food for their families.</p>
+          <div class="idea-divider"></div>
+          <p class="idea-line">The stove is already on.</p>
+          <p class="idea-line">The spices are already measured.</p>
+          <p class="idea-line">The cooking is already happening.</p>
+          <div class="idea-divider"></div>
+          <p class="idea-line">Maase is built on a simple idea:</p>
+          <p class="idea-line turmeric">What if cooking just one extra portion could create income?</p>
+          <div class="idea-divider"></div>
+          <p class="idea-line">No restaurant.</p>
+          <p class="idea-line">No commercial kitchen.</p>
+          <p class="idea-line bold">Just real food from real homes.</p>
+        </div>
+      </div>
+      <div class="idea-img-wrap">
+        <img src="indian-kitchen.jpg" alt="Indian home kitchen" />
       </div>
     </div>
   </div>
