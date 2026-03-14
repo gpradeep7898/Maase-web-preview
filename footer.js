@@ -85,7 +85,7 @@
       width: 42px; height: 42px; border-radius: 11px; overflow: hidden;
       flex-shrink: 0;
     }
-    .mf-logo-img img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.22); transform-origin: center; }
+    .mf-logo-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .mf-logo-name { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: #F8F3E8; }
     .mf-brand-tag { font-size: 0.78rem; color: rgba(248,243,232,0.42); line-height: 1.65; margin-bottom: 20px; }
 
