@@ -39,7 +39,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.16/dist/lenis.min.js"></script>
 
   <style>
     :root {
@@ -51,7 +50,7 @@
       --radius: 28px; --max: 1180px; --green: #22c55e;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
     body {
       color: var(--mocha);
       background: radial-gradient(circle at top right, rgba(244,163,0,0.10), transparent 28%),
@@ -1686,21 +1685,6 @@ document.addEventListener('click', function(e) {
 
 function openNominate() { document.getElementById('nominate').scrollIntoView({ behavior: 'smooth' }); }
 
-/* ── LENIS SMOOTH SCROLL ── */
-(function initLenis() {
-  if (typeof Lenis === 'undefined') { console.warn('Lenis not loaded'); return; }
-  var lenis = new Lenis({ duration: 0.9, easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }, smoothWheel: true, syncTouch: false, wheelMultiplier: 1.2 });
-  function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-  requestAnimationFrame(raf);
-  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-    a.addEventListener('click', function(e) {
-      var href = this.getAttribute('href');
-      if (href === '#') return;
-      var target = document.querySelector(href);
-      if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: -80, duration: 0.9 }); }
-    });
-  });
-})();
 
 /* ── SCROLL ANIMATIONS ── */
 var io = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('vis'); }); }, { threshold: 0.12 });
