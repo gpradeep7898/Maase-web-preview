@@ -376,6 +376,14 @@
     .meal-card-top img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; transition: transform 0.4s ease; }
     .meal-card:hover .meal-card-top img { transform: scale(1.04); }
     .meal-card-tag { position: absolute; bottom: 12px; left: 12px; display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.95); border: 1px solid rgba(34,197,94,0.3); border-radius: 999px; padding: 5px 11px; font-size: 0.7rem; font-weight: 700; color: #15803d; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .meal-card-tag.nonveg { border-color: rgba(239,68,68,0.35); color: #dc2626; }
+    .meal-type { display: inline-flex; align-items: center; gap: 5px; font-size: 0.7rem; font-weight: 700; }
+    .meal-type-dot { width: 14px; height: 14px; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meal-type-dot::after { content: ''; width: 6px; height: 6px; border-radius: 50%; }
+    .meal-type-dot.veg { border: 1.5px solid #15803d; }
+    .meal-type-dot.veg::after { background: #15803d; }
+    .meal-type-dot.nonveg { border: 1.5px solid #dc2626; }
+    .meal-type-dot.nonveg::after { background: #dc2626; }
     .meal-card-body { padding: 18px 20px 16px; }
     .meal-card-body h3 { font-size: 1.05rem; color: var(--mocha); margin-bottom: 8px; line-height: 1.3; }
     .meal-card-body p { font-size: 0.85rem; color: var(--mocha-soft); line-height: 1.65; margin: 0; }
@@ -1075,6 +1083,8 @@
           <p class="idea-line">No restaurant.</p>
           <p class="idea-line">No commercial kitchen.</p>
           <p class="idea-line bold">Just real food from real homes.</p>
+          <div class="idea-divider"></div>
+          <p class="idea-line">Every mother already cooks for her family and children with love and care. The same meal, prepared in the same kitchen, can also reach someone nearby through Maase — bringing home-cooked food made with the same love, care, and trust.</p>
         </div>
       </div>
       <div class="idea-img-wrap">
@@ -1120,27 +1130,27 @@
           <p>Cooked today in a neighbourhood kitchen. Fresh, simple, home style.</p>
         </div>
         <div class="meal-card-foot">
-          <span class="meal-card-label">🏠 Neighbourhood kitchen</span>
+          <span class="meal-type"><span class="meal-type-dot veg"></span>Veg</span>
           <span class="meal-card-badge">Home cooked</span>
         </div>
       </div>
       <div class="meal-card fade d2">
         <div class="meal-card-top">
           <img src="meal-andhra-chicken.jpg" alt="Andhra Chicken + Rice" loading="lazy" />
-          <span class="meal-card-tag">🟢 Cooked fresh today</span>
+          <span class="meal-card-tag nonveg">🔴 Cooked fresh today</span>
         </div>
         <div class="meal-card-body">
           <h3>Andhra Chicken + Rice</h3>
           <p>Spicy homemade meal prepared for lunch. Just like food from a neighbour's home.</p>
         </div>
         <div class="meal-card-foot">
-          <span class="meal-card-label">🏠 Neighbourhood kitchen</span>
+          <span class="meal-type"><span class="meal-type-dot nonveg"></span>Non-Veg</span>
           <span class="meal-card-badge">Home cooked</span>
         </div>
       </div>
       <div class="meal-card fade d3">
         <div class="meal-card-top">
-          <img src="meal-veg-pulao.jpg" alt="Vegetable Pulao + Raita" />
+          <img src="meal-veg-pulao.jpg" alt="Vegetable Pulao + Raita" loading="lazy" />
           <span class="meal-card-tag">🟢 Cooked fresh today</span>
         </div>
         <div class="meal-card-body">
@@ -1148,7 +1158,7 @@
           <p>Comfort food cooked in a family kitchen. Warm, fresh and familiar.</p>
         </div>
         <div class="meal-card-foot">
-          <span class="meal-card-label">🏠 Neighbourhood kitchen</span>
+          <span class="meal-type"><span class="meal-type-dot veg"></span>Veg</span>
           <span class="meal-card-badge">Home cooked</span>
         </div>
       </div>
@@ -1332,7 +1342,7 @@
 
 </main>
 
-<script src="footer.js?v=5"></script>
+<script src="footer.js?v=6"></script>
 
 <!-- CHEF MODAL -->
 <div class="modal-overlay" id="chefModal">
@@ -1679,7 +1689,7 @@ function openNominate() { document.getElementById('nominate').scrollIntoView({ b
 /* ── LENIS SMOOTH SCROLL ── */
 (function initLenis() {
   if (typeof Lenis === 'undefined') { console.warn('Lenis not loaded'); return; }
-  var lenis = new Lenis({ duration: 1.4, easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }, smoothWheel: true, syncTouch: false });
+  var lenis = new Lenis({ duration: 0.9, easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }, smoothWheel: true, syncTouch: false, wheelMultiplier: 1.2 });
   function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
   requestAnimationFrame(raf);
   document.querySelectorAll('a[href^="#"]').forEach(function(a) {
@@ -1687,7 +1697,7 @@ function openNominate() { document.getElementById('nominate').scrollIntoView({ b
       var href = this.getAttribute('href');
       if (href === '#') return;
       var target = document.querySelector(href);
-      if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: -80, duration: 1.4 }); }
+      if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: -80, duration: 0.9 }); }
     });
   });
 })();
