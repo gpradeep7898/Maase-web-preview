@@ -1001,14 +1001,6 @@
   #maase-loader video {
     width: 100%; height: 100%; object-fit: cover; display: block;
   }
-  #loader-skip {
-    position: absolute; bottom: 32px; right: 28px;
-    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
-    color: #fff; font-family: 'Poppins', sans-serif; font-size: 0.8rem; font-weight: 600;
-    padding: 8px 18px; border-radius: 999px; cursor: pointer;
-    backdrop-filter: blur(8px); transition: background 0.2s;
-  }
-  #loader-skip:hover { background: rgba(255,255,255,0.25); }
   </style>
 </head>
 <body>
@@ -1016,7 +1008,6 @@
 <!-- LOADING SCREEN -->
 <div id="maase-loader">
   <video id="loaderVideo" src="loading.mp4" autoplay muted playsinline webkit-playsinline></video>
-  <button id="loader-skip" onclick="dismissLoader()">Skip →</button>
 </div>
 
 <!-- NAV -->
@@ -1932,27 +1923,17 @@ fixSteps(); window.addEventListener('resize', fixSteps);
 /* ── LOADING SCREEN ── */
 (function() {
   var loader = document.getElementById('maase-loader');
-  var video  = document.getElementById('loaderVideo');
-  if (!loader || !video) return;
+  if (!loader) return;
 
-  // Prevent body scroll while loading
   document.body.style.overflow = 'hidden';
 
   function dismissLoader() {
     loader.classList.add('hidden');
     document.body.style.overflow = '';
   }
-  window.dismissLoader = dismissLoader;
 
-  // Auto-dismiss when video ends
-  video.addEventListener('ended', dismissLoader);
-
-  // Fallback: dismiss after 6s max even if video stalls
-  var fallback = setTimeout(dismissLoader, 6000);
-  video.addEventListener('ended', function() { clearTimeout(fallback); });
-
-  // If video fails to load, dismiss immediately
-  video.addEventListener('error', dismissLoader);
+  // Dismiss after exactly 2.5 seconds
+  setTimeout(dismissLoader, 2500);
 })();
 </script>
 </body>
