@@ -1236,6 +1236,7 @@
           Many people miss the taste of simple home food. Maase connects customers with meals cooked in nearby homes, fresh food from local kitchens. <strong>Neighbourhood cooking.</strong>
         </p>
         <div style="display:flex;flex-direction:column;gap:12px;">
+          <input class="c-input" id="custName" type="text" placeholder="Your name" autocomplete="name" />
           <input class="c-input" id="custPhone" type="tel" placeholder="Your phone number" maxlength="10" />
           <div class="area-wrap">
             <input class="c-input" id="custArea" type="text" placeholder="Your area in Bangalore" autocomplete="off" oninput="filterAreas(this)" onfocus="filterAreas(this)" onkeydown="areaKeyNav(event)" />
@@ -1589,10 +1590,11 @@ async function submitNomination() {
 async function joinWaitlist() {
   var okEl = document.getElementById('custOk'), errEl = document.getElementById('custErr');
   okEl.classList.remove('show'); errEl.classList.remove('show');
+  var name = document.getElementById('custName').value.trim();
   var phone = document.getElementById('custPhone').value.trim();
-  if (!phone || phone.length < 10) { errEl.textContent = 'Please enter a valid 10-digit phone number.'; errEl.classList.add('show'); return; }
+  if (!phone || phone.replace(/\D/g,'').length < 10) { errEl.textContent = 'Please enter a valid 10-digit phone number.'; errEl.classList.add('show'); return; }
   var area = document.getElementById('custArea').value.trim();
-  var payload = { phone: phone, city: 'Bangalore', type: 'customer' };
+  var payload = { name: name, phone: phone.replace(/\D/g,''), city: 'Bangalore', area: area || null, type: 'customer' };
   var { error: wlErr } = await sb.from('waitlist').insert([payload]);
   if (wlErr) {
     console.error('Waitlist insert error:', wlErr);

@@ -43,6 +43,7 @@ create table if not exists waitlist (
   joined_at timestamptz default now()
 );
 alter table waitlist add column if not exists area text;
+alter table waitlist add column if not exists name text;
 
 -- Enable Row Level Security (allow anonymous inserts / reads)
 alter table chef_applications enable row level security;
