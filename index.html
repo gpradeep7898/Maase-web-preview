@@ -594,7 +594,7 @@
       .nominate-inner { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .nav-ham { display: block; }
-      .nav-ctas .btn-ghost { display: none; }
+      .nav-ctas .btn-ghost { font-size: 0.8rem; padding: 8px 12px; }
       .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 80px; left: 0; right: 0; z-index: 99; background: rgba(248,243,232,0.97); backdrop-filter: blur(14px); padding: 16px 22px; gap: 14px; border-bottom: 1px solid var(--line); }
       .steps-row { grid-template-columns: 1fr 1fr; gap: 16px; }
       .step-connector { display: none; }
@@ -1014,8 +1014,8 @@
       <a href="#join">Join</a>
     </div>
     <div class="nav-ctas">
-      <button class="btn btn-ghost" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Get Home Food</button>
-      <button class="btn btn-primary" onclick="openChefModal()">Cook &amp; Earn →</button>
+      <a class="btn btn-ghost" href="https://maase-customer-app.vercel.app" target="_blank" rel="noopener">Join as Customer</a>
+      <a class="btn btn-primary" href="https://maase-chef-app.vercel.app" target="_blank" rel="noopener">Join as Chef →</a>
     </div>
     <button class="nav-ham" id="navHam" aria-label="Menu">☰</button>
   </div>
@@ -1333,8 +1333,8 @@
       <h2>Be part of the Maase journey</h2>
       <p>Whether you love cooking or love home food, your input will help us design a better platform.</p>
       <div class="final-cta-btns">
-        <button class="btn btn-primary btn-lg" onclick="openChefModal()">Cook from home and earn</button>
-        <a class="btn btn-secondary btn-lg" href="#order">Get Home Food</a>
+        <a class="btn btn-primary btn-lg" href="https://maase-chef-app.vercel.app" target="_blank" rel="noopener">Join as Chef →</a>
+        <a class="btn btn-secondary btn-lg" href="https://maase-customer-app.vercel.app" target="_blank" rel="noopener">Join as Customer</a>
       </div>
     </div>
   </div>
