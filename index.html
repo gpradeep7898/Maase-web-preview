@@ -1564,7 +1564,7 @@ async function submitChefApp() {
   var payload = { name: v('cf_name'), phone: v('cf_phone'), city: 'Bangalore', area: v('cf_area'), cuisines: cuisines, signature_dishes: v('cf_dishes'), experience: document.getElementById('cf_experience').value, daily_capacity: document.getElementById('cf_capacity').value, kitchen_type: document.getElementById('cf_kitchen').value, self_rating: chefRating, notes: v('cf_notes'), referral_code: refCode, referred_by: new URLSearchParams(window.location.search).get('ref') || null, submitted_at: new Date().toISOString() };
   var { error: insErr } = await sb.from('chef_applications').insert([payload]);
   btn.textContent = 'Submit Application 🍱'; btn.disabled = false;
-  if (insErr) { errEl.textContent = 'Something went wrong. Please try again.'; errEl.classList.add('show'); return; }
+  if (insErr) { console.error('Chef app error:', insErr); errEl.textContent = insErr.code === '23505' ? 'This phone number has already applied!' : 'Error: ' + (insErr.message || insErr.code || 'Unknown'); errEl.classList.add('show'); return; }
   document.getElementById('refCode').textContent = refCode;
   var refUrl = 'https://maaseindia.com?ref=' + refCode;
   document.getElementById('refLink').textContent = refUrl;
@@ -1581,7 +1581,7 @@ async function submitNomination() {
   var cookPhone = document.getElementById('nomCookPhone').value.trim();
   if (!cookName || !cookPhone) { errEl.textContent = "Enter the cook's name and phone."; errEl.classList.add('show'); return; }
   var { error: nomErr } = await sb.from('chef_nominations').insert([{ nominator_name: document.getElementById('nomYourName').value.trim(), cook_name: cookName, cook_phone: cookPhone, reason: document.getElementById('nomReason').value.trim(), submitted_at: new Date().toISOString() }]);
-  if (nomErr) { errEl.textContent = 'Something went wrong. Please try again.'; errEl.classList.add('show'); return; }
+  if (nomErr) { console.error('Nomination error:', nomErr); errEl.textContent = 'Error: ' + (nomErr.message || nomErr.code || 'Unknown'); errEl.classList.add('show'); return; }
   okEl.classList.add('show'); loadMetrics();
 }
 
