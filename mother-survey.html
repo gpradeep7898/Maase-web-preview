@@ -387,18 +387,18 @@
       submitted_at: new Date().toISOString()
     };
 
-    try {
-      var { error } = await sb.from('mother_surveys').insert([payload]);
-      if (error) throw error;
-      document.getElementById('surveyWrap').style.display = 'none';
-      document.getElementById('progressWrap').style.display = 'none';
-      document.getElementById('successWrap').style.display = 'block';
-    } catch(e) {
-      console.error(e);
+    var { error } = await sb.from('mother_surveys').insert([payload]);
+    if (error) {
+      console.error('Supabase error:', error);
+      errEl.textContent = 'Something went wrong: ' + (error.message || JSON.stringify(error));
       errEl.classList.add('show');
       btn.textContent = 'Submit Survey 🍱';
       btn.disabled = false;
+      return;
     }
+    document.getElementById('surveyWrap').style.display = 'none';
+    document.getElementById('progressWrap').style.display = 'none';
+    document.getElementById('successWrap').style.display = 'block';
   };
 </script>
 <script src="footer.js"></script>
