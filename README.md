@@ -71,7 +71,7 @@ Run `supabase-schema.sql` in your Supabase SQL editor to set up:
 - `waitlist` — customer waitlist
 - `mother_surveys` — home cook research survey responses
 
-Supabase project: `aaixsytygsjilgvebnfv`
+Supabase project: `oqvpskyjnbypqcrcmtnh`
 
 ---
 
