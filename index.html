@@ -103,6 +103,28 @@
     .btn-ghost { background: transparent; border-color: rgba(92,58,33,0.18); color: var(--mocha-soft); }
     .btn-lg { padding: 14px 28px; font-size: 1rem; }
 
+    /* Dashboard app links — WIP: muted + “Coming soon”, not clickable */
+    .btn-dashboard-wip { white-space: normal; pointer-events: none; cursor: not-allowed; user-select: none; }
+    .btn-dashboard-wip:hover { transform: none !important; }
+    .btn-dashboard-wip-inner { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-align: center; line-height: 1.15; max-width: 12rem; }
+    .btn-dashboard-wip-label { font-weight: 700; }
+    .btn-dashboard-wip-badge { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; opacity: 0.9; }
+    .btn-dashboard-wip.btn-primary { background: linear-gradient(180deg, #b0aba6 0%, #918c86 100%) !important; color: #fff !important; box-shadow: 0 6px 16px rgba(92,58,33,0.12) !important; border-color: rgba(92,58,33,0.1) !important; }
+    .btn-dashboard-wip.btn-primary::after { display: none !important; }
+    .btn-dashboard-wip.btn-primary:hover { box-shadow: 0 6px 16px rgba(92,58,33,0.12) !important; transform: none !important; }
+    .btn-dashboard-wip.btn-ghost { background: rgba(92,58,33,0.06) !important; border-color: rgba(92,58,33,0.14) !important; color: rgba(92,58,33,0.48) !important; }
+    .btn-dashboard-wip.btn-secondary { background: rgba(92,58,33,0.07) !important; border-color: rgba(92,58,33,0.14) !important; color: rgba(92,58,33,0.5) !important; }
+    .btn-lg.btn-dashboard-wip { padding: 16px 26px; }
+    .btn-lg.btn-dashboard-wip .btn-dashboard-wip-badge { font-size: 0.68rem; }
+    /* Desktop: hide duplicate “Join as Customer” in nav row (same copy lives in nav-ctas); was <a>, now <span> */
+    @media (min-width: 901px) {
+      .nav-links .nav-join-mobile-only { display: none !important; }
+    }
+    /* Mobile menu: allow taps on disabled pill so nav close handler runs */
+    @media (max-width: 900px) {
+      .nav-links .nav-join-mobile-only.btn-dashboard-wip { pointer-events: auto; }
+    }
+
     /* ── SECTIONS ── */
     .section { padding: 52px 0; }
     .section-head { max-width: 760px; margin-bottom: 20px; }
@@ -830,6 +852,13 @@
       box-shadow: 0 18px 40px rgba(244,163,0,0.40), 0 2px 0 rgba(255,255,255,0.18) inset !important;
       transform: translateY(-3px) !important;
     }
+    .btn-dashboard-wip.btn-primary {
+      box-shadow: 0 6px 16px rgba(92,58,33,0.12) !important;
+    }
+    .btn-dashboard-wip.btn-primary:hover {
+      box-shadow: 0 6px 16px rgba(92,58,33,0.12) !important;
+      transform: none !important;
+    }
 
     /* ── IDEA SECTION IMAGE HOVER ── */
     .idea-img-wrap img {
@@ -1012,11 +1041,11 @@
       <a href="#why">Why Maase</a>
       <a href="#nominate">Nominate a Cook</a>
       <a href="#join">Join</a>
-      <a class="btn btn-ghost" href="https://maase-customer-app.vercel.app" target="_blank" rel="noopener" style="width:100%;justify-content:center;margin-top:4px;">Join as Customer</a>
+      <span class="btn btn-ghost btn-dashboard-wip nav-join-mobile-only" style="width:100%;justify-content:center;margin-top:4px;" aria-disabled="true"><span class="btn-dashboard-wip-inner"><span class="btn-dashboard-wip-label">Join as Customer</span><span class="btn-dashboard-wip-badge">Coming soon</span></span></span>
     </div>
     <div class="nav-ctas">
-      <a class="btn btn-ghost" href="https://maase-customer-app.vercel.app" target="_blank" rel="noopener">Join as Customer</a>
-      <a class="btn btn-primary" href="https://maase-chef-app.vercel.app" target="_blank" rel="noopener">Join as Chef →</a>
+      <span class="btn btn-ghost btn-dashboard-wip" aria-disabled="true"><span class="btn-dashboard-wip-inner"><span class="btn-dashboard-wip-label">Join as Customer</span><span class="btn-dashboard-wip-badge">Coming soon</span></span></span>
+      <span class="btn btn-primary btn-dashboard-wip" aria-disabled="true"><span class="btn-dashboard-wip-inner"><span class="btn-dashboard-wip-label">Join as Chef →</span><span class="btn-dashboard-wip-badge">Coming soon</span></span></span>
     </div>
     <button class="nav-ham" id="navHam" aria-label="Menu">☰</button>
   </div>
@@ -1334,8 +1363,8 @@
       <h2>Be part of the Maase journey</h2>
       <p>Whether you love cooking or love home food, your input will help us design a better platform.</p>
       <div class="final-cta-btns">
-        <a class="btn btn-primary btn-lg" href="https://maase-chef-app.vercel.app" target="_blank" rel="noopener">Join as Chef →</a>
-        <a class="btn btn-secondary btn-lg" href="https://maase-customer-app.vercel.app" target="_blank" rel="noopener">Join as Customer</a>
+        <span class="btn btn-primary btn-lg btn-dashboard-wip" aria-disabled="true"><span class="btn-dashboard-wip-inner"><span class="btn-dashboard-wip-label">Join as Chef →</span><span class="btn-dashboard-wip-badge">Coming soon</span></span></span>
+        <span class="btn btn-secondary btn-lg btn-dashboard-wip" aria-disabled="true"><span class="btn-dashboard-wip-inner"><span class="btn-dashboard-wip-label">Join as Customer</span><span class="btn-dashboard-wip-badge">Coming soon</span></span></span>
       </div>
     </div>
   </div>
@@ -1469,7 +1498,7 @@ loadMetrics();
 var ham = document.getElementById('navHam');
 var nl = document.getElementById('navLinks');
 ham.addEventListener('click', function() { nl.classList.toggle('open'); ham.textContent = nl.classList.contains('open') ? '✕' : '☰'; });
-document.querySelectorAll('.nav-links a').forEach(function(a) { a.addEventListener('click', function() { nl.classList.remove('open'); ham.textContent = '☰'; }); });
+document.querySelectorAll('.nav-links a, .nav-links .nav-join-mobile-only').forEach(function(el) { el.addEventListener('click', function() { nl.classList.remove('open'); ham.textContent = '☰'; }); });
 
 /* ── PHONE FILTER ── */
 var phoneChipsEl = document.getElementById('phoneChips');
