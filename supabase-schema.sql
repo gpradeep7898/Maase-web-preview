@@ -1,4 +1,4 @@
--- Run this in Supabase SQL Editor → https://supabase.com/dashboard/project/aaixsytygsjilgvebnfv/sql
+-- Run this in Supabase SQL Editor → https://supabase.com/dashboard/project/oqvpskyjnbypqcrcmtnh/sql
 
 -- Chef Applications table
 create table if not exists chef_applications (
