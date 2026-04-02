@@ -85,12 +85,12 @@
       width: 42px; height: 42px; border-radius: 11px; overflow: hidden;
       flex-shrink: 0;
     }
-    .mf-logo-img img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.12); }
+    .mf-logo-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .mf-logo-name { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: #F8F3E8; }
     .mf-brand-tag { font-size: 0.78rem; color: rgba(248,243,232,0.42); line-height: 1.65; margin-bottom: 20px; }
 
     /* Social icons */
-    .mf-social-row { display: flex; gap: 8px; margin-bottom: 26px; }
+    .mf-social-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
     .mf-social-btn {
       width: 34px; height: 34px; border-radius: 8px;
       background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
@@ -230,7 +230,7 @@
         <!-- Brand + Newsletter -->
         <div class="mf-brand-col">
           <div class="mf-logo-wrap">
-            <div class="mf-logo-img"><img src="logo-v4.jpg" alt="Maase" /></div>
+            <div class="mf-logo-img"><img src="logo-v5.jpg" alt="Maase" /></div>
             <span class="mf-logo-name">Maase</span>
           </div>
           <div class="mf-brand-tag">One Extra Meal, From Maa.<br />India's marketplace for authentic home cooked food.</div>
