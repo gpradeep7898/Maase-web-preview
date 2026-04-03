@@ -1076,7 +1076,8 @@
         <button class="btn btn-secondary btn-lg" onclick="openChefModal()">Cook from home and earn</button>
       </div>
       <div class="hero-trust hero-anim d5">
-        <div class="live-badge"><div class="live-dot"></div><span id="liveApps">early</span> applications from Bangalore</div>
+        <!-- #liveApps: static “100+” for now; to go dynamic again, set from loadMetrics() like mTotalApps -->
+        <div class="live-badge"><div class="live-dot"></div><span id="liveApps">100+</span> applications from Bangalore</div>
       </div>
     </div>
 
@@ -1266,15 +1267,15 @@
           Many people miss the taste of simple home food. Maase connects customers with meals cooked in nearby homes, fresh food from local kitchens. <strong>Neighbourhood cooking.</strong>
         </p>
         <div style="display:flex;flex-direction:column;gap:12px;">
-          <input class="c-input" id="custName" type="text" placeholder="Your name" autocomplete="name" />
-          <input class="c-input" id="custPhone" type="tel" placeholder="Your phone number" maxlength="10" />
+          <input class="c-input" id="custName" type="text" placeholder="Your name *" autocomplete="name" required minlength="1" maxlength="120" />
+          <input class="c-input" id="custPhone" type="tel" placeholder="Your phone number *" maxlength="10" inputmode="numeric" required autocomplete="tel" />
           <div class="area-wrap">
-            <input class="c-input" id="custArea" type="text" placeholder="Your area in Bangalore" autocomplete="off" oninput="filterAreas(this)" onfocus="filterAreas(this)" onkeydown="areaKeyNav(event)" />
+            <input class="c-input" id="custArea" type="text" placeholder="Your area in Bangalore *" autocomplete="off" required minlength="1" maxlength="120" oninput="filterAreas(this)" onfocus="filterAreas(this)" onkeydown="areaKeyNav(event)" />
             <ul class="area-dropdown" id="areaDropdown"></ul>
           </div>
           <button class="btn btn-primary btn-lg" onclick="joinWaitlist()">Get Home Food →</button>
           <div class="c-success" id="custOk">✓ You're on the list! We'll text you when we launch near you.</div>
-          <div class="c-error" id="custErr">Please enter a valid phone number.</div>
+          <div class="c-error" id="custErr">Please fill in your name, phone, and area.</div>
         </div>
       </div>
       <div class="fade d2" style="display:flex;align-items:center;justify-content:center;">
@@ -1482,13 +1483,13 @@ async function loadMetrics() {
       sb.from('waitlist').select('*', { count: 'exact', head: true }),
     ]);
     var a = apps.count || 0, n = noms.count || 0, w = waitlist.count || 0;
-    setEl('liveApps', a + '+');
+    /* Hero #liveApps left static in HTML (100+); restore: setEl('liveApps', a + '+'); */
     setEl('mTotalApps', a + '+');
     setEl('mNominations', n + '+');
     setEl('mWaitlist', w + '+');
     setEl('nomCount', n);
   } catch(e) {
-    setEl('liveApps', 'early');
+    /* #liveApps stays static 100+ in HTML on error */
     setEl('mTotalApps', '—'); setEl('mNominations', '—'); setEl('mWaitlist', '—'); setEl('nomCount', '0');
   }
 }
@@ -1620,11 +1621,17 @@ async function submitNomination() {
 async function joinWaitlist() {
   var okEl = document.getElementById('custOk'), errEl = document.getElementById('custErr');
   okEl.classList.remove('show'); errEl.classList.remove('show');
-  var name = document.getElementById('custName').value.trim();
-  var phone = document.getElementById('custPhone').value.trim();
-  if (!phone || phone.replace(/\D/g,'').length < 10) { errEl.textContent = 'Please enter a valid 10-digit phone number.'; errEl.classList.add('show'); return; }
-  var area = document.getElementById('custArea').value.trim();
-  var payload = { name: name || null, phone: phone.replace(/\D/g,''), city: 'Bangalore', area: area || null, type: 'customer' };
+  var nameEl = document.getElementById('custName');
+  var phoneEl = document.getElementById('custPhone');
+  var areaEl = document.getElementById('custArea');
+  var name = nameEl ? nameEl.value.trim() : '';
+  var phone = phoneEl ? phoneEl.value.trim() : '';
+  var area = areaEl ? areaEl.value.trim() : '';
+  var phoneDigits = phone.replace(/\D/g, '');
+  if (!name) { errEl.textContent = 'Please enter your name.'; errEl.classList.add('show'); return; }
+  if (!phoneDigits || phoneDigits.length < 10) { errEl.textContent = 'Please enter a valid 10-digit phone number.'; errEl.classList.add('show'); return; }
+  if (!area) { errEl.textContent = 'Please enter your area in Bangalore.'; errEl.classList.add('show'); return; }
+  var payload = { name: name, phone: phoneDigits, city: 'Bangalore', area: area, type: 'customer' };
   var { error: wlErr } = await sb.from('waitlist').insert([payload]);
   if (wlErr) {
     console.error('Waitlist insert error:', wlErr);
