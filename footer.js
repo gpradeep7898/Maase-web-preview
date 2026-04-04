@@ -230,7 +230,7 @@
         <!-- Brand + Newsletter -->
         <div class="mf-brand-col">
           <div class="mf-logo-wrap">
-            <div class="mf-logo-img"><img src="logo-v5.jpg" alt="Maase" /></div>
+            <div class="mf-logo-img"><img src="logo-v6.png" alt="Maase" /></div>
             <span class="mf-logo-name">Maase</span>
           </div>
           <div class="mf-brand-tag">One Extra Meal, From Maa.<br />India's marketplace for authentic home cooked food.</div>
